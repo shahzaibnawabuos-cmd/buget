@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT by Nawab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="auth-container">
+        <div id="signup-form">
+            <h2>Sign Up</h2>
+            <input type="text" id="signup-username" placeholder="Username" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <button onclick="signup()">Sign Up</button>
+            <p>Already have an account? <a href="#" onclick="showSignin()">Sign In</a></p>
+        </div>
+        <div id="signin-form" style="display: none;">
+            <h2>Sign In</h2>
+            <input type="text" id="signin-username" placeholder="User name" required>
+            <input type="password" id="signin-password" placeholder="Password" required>
+            <button onclick="signin()">Sign In</button>
+            <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+        </div>
+    </div>
+
+    <div id="dashboard" style="display: none;">
+        <header>
+            <h1>BT by Nawab</h1>
+            <div>
+                <select id="month-select">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <button onclick="addIncome()">+ Add Income</button>
+                <button onclick="addCategory()">+ Add Expense Category</button>
+                <button onclick="addTransaction()">+ Add Transaction</button>
+                <button onclick="saveChanges()">Save Changes</button>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <h2>Income</h2>
+        <table id="income-table">
+            <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="income-body">
+                <!-- Rows will be added dynamically -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><strong>Total Income</strong></td>
+                    <td id="total-income">0</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <h2>Expenses</h2>
+        <table id="budget-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Goal</th>
+                    <th>Actual</th>
+                    <th>Difference</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="budget-body">
+                <!-- Rows will be added dynamically -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><strong>Total Expenses</strong></td>
+                    <td id="total-goal">0</td>
+                    <td id="total-actual">0</td>
+                    <td id="total-difference">0</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div id="summary">
+            <p><strong>Net: </strong><span id="net-amount">0</span></p>
+            <p><strong>Savings: </strong><span id="savings-amount">0</span></p>
+        </div>
+
+        <!-- Custom prompt modal -->
+        <div id="custom-prompt" style="display: none;">
+            <div id="prompt-overlay"></div>
+            <div id="prompt-box">
+                <p id="prompt-message">Enter amount to add:</p>
+                <input type="number" id="prompt-input" placeholder="0">
+                <button onclick="confirmPrompt()">OK</button>
+                <button onclick="cancelPrompt()">Cancel</button>
+            </div>
+        </div>
+
+        <h2>Transactions</h2>
+        <table id="transactions-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="transactions-body">
+                <!-- Rows will be added dynamically -->
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
